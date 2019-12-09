@@ -43,3 +43,6 @@
 # .vscode
 *.tlog
 *.ilk
+
+*.idb
+*.pdb
