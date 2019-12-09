@@ -1,6 +1,2 @@
 *.gdoc
-Code\C++\.vs\
-Code\C++\.vscode\
-Code\C++\Debug\
-Code\C++\x64\
-
+.vs/
