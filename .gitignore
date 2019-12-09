@@ -34,3 +34,12 @@
 *.app
 
 
+# VS code
+# .vs
+*.suo
+*.db
+*.opendb
+
+# .vscode
+*.tlog
+*.ilk
