@@ -1,5 +1,20 @@
+# file extensions
 *.gdoc
 *.sln
+*.ipch
+*.suo
+*.db
+*.
+tasks.json
+*.obj
+*.exe
+*.ilk
+*.pdb
+*.idb
+*.tlog
+*.log
+
+# C++ folder
 Code/C++/.vs/
 Code/C++/.vscode/
 Code/C++/Debug/
