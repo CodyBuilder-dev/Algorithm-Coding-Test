@@ -1,6 +1,2 @@
-﻿  BOJ-12865.cpp
-  BOJ-2293.cpp
-c:\users\student\google 드라이브\2_동아리,학회 및 활동\ssafy\알고리즘 준비\code\c++\ssafy-pc-code\boj-2293.cpp(22): error C2065: 'NM': 선언되지 않은 식별자입니다.
-c:\users\student\google 드라이브\2_동아리,학회 및 활동\ssafy\알고리즘 준비\code\c++\ssafy-pc-code\boj-2293.cpp(22): error C2065: 'k': 선언되지 않은 식별자입니다.
-c:\users\student\google 드라이브\2_동아리,학회 및 활동\ssafy\알고리즘 준비\code\c++\ssafy-pc-code\boj-2293.cpp(23): error C2065: 'k': 선언되지 않은 식별자입니다.
-  코드를 생성하고 있습니다...
+﻿  22.cpp
+  SSAFY-PC-Code.vcxproj -> C:\Users\student\Google 드라이브\2_동아리,학회 및 활동\SSAFY\알고리즘 준비\Code\C++\x64\Debug\SSAFY-PC-Code.exe
