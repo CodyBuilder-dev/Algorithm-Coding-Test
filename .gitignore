@@ -25,3 +25,10 @@ Code/C++/.vs/SSAFY-PC-Code/v15/.suo
 Code/C++/.vs/SSAFY-PC-Code/v16/.suo
 *.ipch
 *.obj
+*.db
+*.pdb
+*.idb
+*.lastbuildstate
+*.tlog
+*.log
+*.exe
