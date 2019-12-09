@@ -13,3 +13,11 @@
 접미사 | ing =  풀이중인 문제
 접미사 | wrong = 오답
 접미사 | note = 공부해야할 부분이 있는 문제
+
+# Repo 관리 규칙
+
+1. 코드는 Visual Studio Project로 작성한다
+
+2. Project 폴더 하나에서 구글 드라이브와 Github를 함께 사용한다
+
+3. 프로젝트 폴더를 통째로 올리되, 큰 용량을 차지하는 파일들을 .gitignore에 넣어 생략한다
