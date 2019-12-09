@@ -19,3 +19,9 @@ Code/C++/.vs/
 Code/C++/.vscode/
 Code/C++/Debug/
 Code/C++/x64/
+*.ilk
+Code/C++/.vs/SSAFY-PC-Code/v15/.suo
+*.db
+Code/C++/.vs/SSAFY-PC-Code/v16/.suo
+*.ipch
+*.obj
