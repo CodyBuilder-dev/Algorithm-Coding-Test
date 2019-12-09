@@ -2,5 +2,5 @@
 
 int main()
 {
-	std::cout << "fuck";
+	std::cout << "fuck2222";
 }
