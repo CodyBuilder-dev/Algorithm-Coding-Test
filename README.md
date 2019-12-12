@@ -14,6 +14,13 @@
 접미사 | wrong = 오답
 접미사 | note = 공부해야할 부분이 있는 문제
 
+# 함수/자료구조 연습 파일명 저장 규칙
+    practice-이름.확장자
+   
+명칭 | 의미
+----|----
+이름 | 연습을 수행한 함수/자료구조 이름 <br> (practice-string,practice-memset 등)
+
 # Repo 관리 규칙
 
 1. 코드는 Visual Studio Project로 작성한다
