@@ -13,6 +13,7 @@ tasks.json
 *.idb
 *.tlog
 *.log
+*.lastbuildstate
 
 # C++ folder
 Code/C++/.vs/
@@ -21,12 +22,6 @@ Code/C++/Debug/
 Code/C++/x64/
 Code/C++/.vs/SSAFY-PC-Code/v15/.suo
 Code/C++/.vs/SSAFY-PC-Code/v16/.suo
-*.pdb
-*.idb
-*.lastbuildstate
-*.tlog
-*.log
-Code/C++/.vs/SSAFY-PC-Code/v15/.suo
 Code/C++/.vs/SSAFY-PC-Code/v15/Browse.VC.db
 Code/C++/SSAFY-PC-Code/x64/Debug/SSAFY-PC-Code.log
 Code/C++/SSAFY-PC-Code/x64/Debug/SSAFY-PC-Code.tlog/link.read.1.tlog
@@ -36,7 +31,3 @@ Code/C++/SSAFY-PC-Code/x64/Debug/vc141.idb
 Code/C++/x64/Debug/SSAFY-PC-Code.exe
 Code/C++/x64/Debug/SSAFY-PC-Code.ilk
 Code/C++/x64/Debug/SSAFY-PC-Code.pdb
-Code/C++/SSAFY-PC-Code/SSAFY-PC-Code.vcxproj
-Code/C++/SSAFY-PC-Code/SSAFY-PC-Code.vcxproj.filters
-
-
