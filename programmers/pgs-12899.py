@@ -10,6 +10,7 @@ def dec2tri(d) :
 
     while d != 0 :
         d -= 1
+        
         namuzi = d%3
         mok = d//3
         
