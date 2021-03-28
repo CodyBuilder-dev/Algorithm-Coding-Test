@@ -29,7 +29,6 @@ class CustomPriorityQueue(PriorityQueue):
     def _get(self):
         return super()._get()[1]
 
-
     def _get_priority(self, item):
         return item[1]
 
