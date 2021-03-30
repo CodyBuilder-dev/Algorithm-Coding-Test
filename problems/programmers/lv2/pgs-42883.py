@@ -1,79 +1,31 @@
 """
-요구조건
-1. 이미 순서가 정해진 숫자가 있다
-2. 숫자 k개를 제거해서 가장 큰 수를 만들어라
+제목 : 큰 수 만들기
 
 접근법 1: 브루트 포스
 1. 2개를 임의로 뽑는다( 100만C2 = 시간 초과!)
 2. 리스트에 보관한다
 3. 최종적으로 보관된 리스트를 정렬 
+-> number의 자리수가 10^6이므로, 완전탐색을 쓰지 말라는 소리다
 
 접근법 2 : 그리디
-1. 제일 큰 숫자 위치 파악 
-2. 앞에 남은 숫자랑 지울수 있는 개수 비교
--> 남은 숫자 > 지우는 개수 : 두번째 큰 수에 대해 반복
--> 남은 숫자 = 지우는 개수 : 지우면 땡!
--> 남은 숫자 < 지우는 개수 : 지우고 뒷부분에 대해 다시 반복
+- 길이가 n인데 k개를 제거한다 -> n-k개를 뽑는다
+- 아래의 순서대로 숫자를 뽑는다
+    - 제일 큰 수를 찾아 뽑는다
+    - 해당 수 앞의 수와 뒤의 수 개수를 본다
+        - 뒤에 충분한 수가 있는 경우, 해당 수 뒷부분에서 다음 큰수를 찾는다
+        - 뒤에 충분한 수가 없는 경우 해당 뒤의 수를 모두 포함시킨 후 앞부분에서 다음으로 큰 수를 찾는다
+
+구현 : 숫자와 인덱스를 저장한 tuple로 구현
+
+
+
 """
 
-def findMaxIndex(number) :
-    return number.index(max(number))
-
-def findSecondIndex(number) :
-    sortedNumber = []
-    for i,num in enumerate(number) :
-        sortedNumber.append((int(num),i))
-    sortedNumber = sorted(sortedNumber,key=lambda x: (-x[0],x[1]))    
-    return sortedNumber[1][1]
-
-# def solution(number, k):
-#     sortedNumber = []
-#     for i,num in enumerate(number) :
-#         sortedNumber.append((int(num),i))
-#     sortedNumber = sorted(sortedNumber,key=lambda x: (-x[0],x[1]))
-
-#     resultNum = ""
-#     resultLen = len(number) - k
-#     while len(number) != resultLen :
-#         leftOfMax = sortedNumber[0][1]
-#         if leftOfMax > k :
-#             sortedNumber.pop(0)
-#         elif leftOfMax < k :
-#             sortedNumber.pop(0)
-#             resultNum.append(number[leftOfMax])
-#             number = number[leftOfMax : ]
-            
-#             k -= leftOfMax
-#         else : 
-#             resultNum.append(number[l])
-        
-#     return resultNum
-
-
-
 def solution(number, k):
-    resultNum = [0]*len(number)
+    a
+    return a
 
-    leftOfMax = findMaxIndex(number)
-
-    def doTask(number,k,leftOfMax) :
-        if leftOfMax > k :
-            resultNum[leftOfMax] = number[leftOfMax]
-            doTask(number[:leftOfMax]+number[leftOfMax+1:],k,findSecondIndex(number))
-        elif leftOfMax < k :
-            resultNum[leftOfMax] = number[leftOfMax]
-            solution(number[leftOfMax+1:],k-leftOfMax)
-        else :
-            resultNum[leftOfMax:] = number[leftOfMax:]
-    
-    
-    doTask(number,k,leftOfMax)
-    return resultNum
-    
-number = "1924"
-k = 2
-
-number = "1231234"
-k = 3
-
-print(solution(number, k))
+# 테스트케이스
+print(solution("1924",2),"94")
+print(solution("1231234", 3),"3234")
+print(solution("4177252841",4),"775841")
