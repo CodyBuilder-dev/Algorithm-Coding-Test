@@ -69,12 +69,9 @@ def solution(name):
     answer = total_move
     return answer
 
-print(solution("DAZ"))
-# print(0%3)
-# print(-1%3)
-# print(-2%3)
-# print(-3%3)
-# print(-4%3)
-# print(ord("A")-ord("Z"))
+#테스트 케이스, 설명대로의 정답, 등록 해답의 정답
+print(solution("DAZ"),5,5)
+print(solution("ABAAAAAAAAABB"),7,7)
+print(solution("JAJAAAJ"),32, 31)
 
 
