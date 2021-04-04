@@ -20,7 +20,6 @@
 def solution(s):
     maxima =1
 
-
     for i,c in enumerate(s):
         # 회문 길이가 홀수인 경우
         j = 0
@@ -48,9 +47,10 @@ def solution(s):
                         j-=1
                         break
                 maxima = 2*(j+1) if 2*(j+1) >= maxima else maxima
-
     return maxima
 
+
+#테스트 케이스
 print(solution("abcdcba"))
 print(solution("a"))
 print(solution("abacde"))
