@@ -36,7 +36,7 @@ def solution(a):
         if a[i] > right_min: survive[i] = False
         else: right_min=a[i]
 
-    return survive.count(True)
+    return survive.count(True) # O(n)
 
 
 
