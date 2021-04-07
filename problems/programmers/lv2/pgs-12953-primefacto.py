@@ -31,7 +31,6 @@ def mult(values: list) -> int:
     return values[0]*mult(values[1:])
 
 def solution(arr):
-
     prime = eratosthenes(100)
     prime_min = dict.fromkeys(prime.keys(),0)
 
