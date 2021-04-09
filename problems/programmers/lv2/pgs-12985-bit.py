@@ -9,10 +9,9 @@
 - a와 b의 차이가 1이고, 2로 나눈 몫의 절대값이 1 차이나는 경우에 만남
 
 구현 : 비트마스크로 구현
-
 """
 def solution(n,a,b):
-    return
+    return ((a-1)^(b-1)).bit_length()
 
 print(solution(8,4,7))
 

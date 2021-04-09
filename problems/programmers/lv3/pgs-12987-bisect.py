@@ -6,9 +6,6 @@
 - A보다 +1만큼만 큰 친구 내보내기
 - A를 순회하면서, A보다 큰 친구 중 가장 작은 친구 내보내기
     - 정렬 후 Lower Bound로 계산 가능 O(NlogN)
-
-구현 : 돌면서 전략에 의해
--
 """
 from bisect import bisect
 
