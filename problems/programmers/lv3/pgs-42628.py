@@ -26,6 +26,7 @@ class DoublePriorityQueue:
         self.queue.insert(idx,num)
 
     def _delete(self,flag):
+        if len(self.queue) < 1: return
         if flag == -1:
             self.queue.pop(0)
         else:
@@ -35,8 +36,14 @@ def solution(operations):
     dpq = DoublePriorityQueue()
 
     for op in operations:
+        op = op.split()
         if op[0] == 'I':
             dpq._insert(int(op[1]))
-        if op[1] == 'D':
+        if op[0] == 'D':
             dpq._delete(int(op[1]))
-    return dpq.queue[-1],dpq.queue[0]
+    return [dpq.queue[-1],dpq.queue[0]] if dpq.queue else [0,0]
+
+# 테스트케이스
+print(solution(["I 16","D 1"]))
+print(solution(["I 7","I 5","I -5","D -1"]))
+print(solution(["I 10", "I 20", "D 1", "I 30", "I 40", "D -1", "D -1"]))
