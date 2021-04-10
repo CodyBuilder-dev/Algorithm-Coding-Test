@@ -16,7 +16,8 @@
         - 스택의 맨 마지막 값보다 작으면, 스택에서 더 작은값이 안 나올때까지 뺀다
             - 빼는 과정에서, 현재 값까지의 거리를 answer에 저장한다
 - 시간복잡도
-    - 근데 결국 while을 돌리니까 최악의 경우는 O(N
+    - 근데 결국 for문 내부에서 while을 돌리니까 최악의 경우는 O(N^2)이다
+    - 그러나 실제로는, while의 횟수가 for 전체의 길에에 비해 매우 짧아지므로 거의 O(N)에 가깝다
 """
 def solution(prices):
     answer = [0]*len(prices)
@@ -30,7 +31,7 @@ def solution(prices):
         else:
             stack.append((p,i))
 
-    # 떨어지지 않은것만 처리
+    # 끝까지 떨어지지 않은것만 별도 처리
     answer = [len(answer) - 1 - i if not a else a for i,a in enumerate(answer)]
 
     return answer
