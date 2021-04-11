@@ -11,6 +11,7 @@
         - (width+1) * min(height) vs 1 * new_height 비교해서 처리
 """
 def calc(heights):
+    pass
 
 def solution():
     c = int(input())

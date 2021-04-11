@@ -19,12 +19,12 @@ class Tree:
 def insert(t: Tree,root: Tree):
     for child in root.children:
         dist = ((t.x - child.x)**2 + (t.y - child.y)*2)**0.5
-        if dist + min(t.r,child.r) <= max(t.r,child.r)
+        if dist + min(t.r,child.r) <= max(t.r,child.r):
+            pass
 
 
-def solution()
+def solution():
     c = int(input())
     n = int(input())
     for i in range(n):
         x,y,r = map(int,input())
-        t =
