@@ -46,7 +46,7 @@ def solution(str1, str2):
 print(solution("FRANCE","french"),16384)
 print(solution("ABDDD", "DDEFGHH"),7281);
 print(solution("AACCC", "A A A A A C C C C"),0);
-print(solution("AAbbaa_AA", "BBB"),13107);
+print(solution("AAbbaa_AA", "BBB"),9362);
 print(solution("CCDEFGHH", "ABCCC"),6553);
 print(solution("FRANCE", "french"),16384);
 print(solution("handshake", "shake hands"),65536);
