@@ -45,13 +45,16 @@ def solution(distance, rocks, n):
                 rocks.pop(min_idx + 1)
         count+=1
 
-    print(diff_info)
     return min(diff_info)
 
+# 테스트 케이스
 print(solution(25,[2, 14, 11, 21, 17],2))
 print(solution(25,[2, 14, 11, 21, 17],3))
 print(solution(25,[2, 14, 11, 21, 17],4))
 print(solution(10, [3, 5, 7], 2),5)
 print(solution(25,[2, 14, 11, 21, 17, 24],3),4)
 print(solution(10, [6,7,8,9], 3),4)
-print(solution(16, [4, 8, 11], 2),8)
+print(solution(16, [4, 8, 11], 2),8) # 그리디 저격 테스트 케이스
+print(solution( distance = 34 , rocks = [5, 19, 28], n= 2 ),15)
+print(solution( distance = 1234, rocks = [1, 2, 3], n = 3),1234)
+print(solution(18, [2, 8, 9, 10, 11, 12, 13], 6),9)
