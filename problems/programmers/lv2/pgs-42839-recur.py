@@ -28,6 +28,6 @@ def solution(numbers):
     return answer
 
 # 테스트 케이스
-print(solution("17"))
-print(solution("011"))
+# print(solution("17"))
+# print(solution("011"))
 print(solution("9876543"))
