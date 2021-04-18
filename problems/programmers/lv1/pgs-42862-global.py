@@ -1,10 +1,12 @@
 """
-카테고리 : 그리디로 풀면 막히는 문제
+제목 : 체육복
 
 아이디어 :
-1. 모든 경우에 대해서 완탐을 수행할 수 있도록 코드를 짜야 함
--> 이때, 자기자신이 잃어버리면, 그사람은 reserve에서 제외한다
-3. 
+(1) 중복 제거
+- 이때, 보유자 자기자신이 잃어버리면, 그사람은 reserve에서 제외한다
+
+(2) 모든 경우에 대해서 완탐을 수행할 수 있도록 코드를 짜야 함
+
 """
 
 maxima = -10
@@ -41,21 +43,8 @@ def solution(n, lost, reserve):
 
     return maxima
 
-n= 5
-lost = [2, 4]
-reserve = [1, 3, 5]
-
-n = 5
-lost = [2, 4]
-reserve= [3]
-
-n = 3
-lost = [3]
-reserve = [1]
-
-n = 7
-lost = [1,2,3]
-reserve = [5,6,7]
-
-result = solution(n, lost, reserve)
-print(result)
+# 테스트 케이스
+print(solution(5,[2,4],[1,3,5]),5)
+print(solution(5,[2,4],[3]),4)
+print(solution(3,[3],[1]),2)
+print(solution(7,[1,2,3],[5,6,7]),4)
