@@ -23,7 +23,7 @@
 -> 재귀 해제
 """
 import sys
-sys.setrecursionlimit(1001)
+sys.setrecursionlimit(1000000)
 
 class Node:
     def __init__(self,idx,x,y):
