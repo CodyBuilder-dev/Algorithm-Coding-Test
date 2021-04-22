@@ -33,7 +33,4 @@ def solution(n, computers):
 
     return len(network)
 
-n = 3
-computers = [[1, 1, 0], [1, 1, 0], [0, 0, 1]]
-
-print(solution(n,computers))
+print(solution(3,[[1, 1, 0], [1, 1, 0], [0, 0, 1]]))
