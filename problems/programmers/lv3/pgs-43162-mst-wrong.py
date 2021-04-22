@@ -16,9 +16,6 @@
             else : network[node].append(i)
     - if len(network[node]) == 1: del network[node]
 - return len(network)
-
-
-예외처리 :
 """
 def solution(n, computers):
     network = dict()
