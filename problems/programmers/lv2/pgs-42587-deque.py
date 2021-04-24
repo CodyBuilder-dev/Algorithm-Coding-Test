@@ -1,4 +1,6 @@
 """
+제목 : 프린터
+
 접근법 : 예측 X, 구현
 1. for 돌림
 2. 있으면 맨 뒤로, 없으면 출력
@@ -7,22 +9,28 @@
 
 from collections import deque
 
+
 def solution(priorities, location):
     answer = 1
-    prioritiesWithMark = [(v,1) if i == location else (v,-1) for i,v in enumerate(priorities)]
-    dq = deque(prioritiesWithMark)
+    priorities_with_mark = [(v, 1) if i == location else (v, -1) for i, v in enumerate(priorities)]
+    dq = deque(priorities_with_mark)
 
-    while len(dq) > 0 :
+
+    # while len(dq) > 0:
+    while dq:
         a = dq.popleft()
-        
-        if len(dq) == 0 : break
-        
-        if a[0] >= max([b[0] for b in dq]) : 
-            if a[1] == 1 : break
-            else : answer += 1
-        else : dq.append(a)
-        
+
+        # if len(dq) == 0: break
+        if not dq: break
+
+        if a[0] >= max([b[0] for b in dq]):
+            if a[1] == 1: break
+            else: answer += 1
+        else:
+            dq.append(a)
+
     return answer
+
 
 priorities = [2, 1, 3, 2]
 location = 2
@@ -31,5 +39,5 @@ priorities = [1, 1, 9, 1, 1, 1]
 location = 0
 
 priorities = [1]
-location= 0
+location = 0
 print(solution(priorities, location))
