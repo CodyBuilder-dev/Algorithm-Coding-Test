@@ -1,53 +1,40 @@
 """
 제목 : 야근 지수
 
-아이디어 : 절대 부등식을 사용하면 된다
-- 
+아이디어 :
+- 남은 시간의 제곱의 합을 최소화한다
+- 즉 남은 시간들이 최대한 비슷하면 되는 듯
+(1) 수식으로 푼다
+-> 어떤 수식으로 어떻게 풀건데? 어렵다
 
+(2) 제일 높은 애 부터 깎아내면 된다
+- 원소를 최대 힙에 집어넣는다
+- 제일 큰놈을 뽑아 1 깎고 다시 집어넣는다
+- 다 떨어질 때 까지 반복
 
-구현 : 절대부등식을 어떻게 구현하나?
-- 분산최소화?
-- 작업이 완료된 후의 작업량 총합을 x라 하자
-    - x가 3개에 평등하게 나뉘어져 있는 상태가 최선이다
+구현 :
+(1) 부호를 바꾸는 방법
+- 모든 works의 원수는 자연수이므로 음수 씌워도 문제 없음
 
-예시 : 4 3 3
-- 작업후 10-4 = 6
-- 6/3 = 2*3 + 0인 것이 최선이다
-    - 3개에 2를 배분한다
-    - 2,2,2
-- 최종 피로도는 2^2 * 3
-    - 2^2 * 3 + (2+0)^2 * 0
-
-예시 : 2,1,2
-- 작업후 4
-- 4/3 = 1*3 + 1인 것이 최선이다
-    - 3개에 1을 배분하고, 나머지를 다시 배분한다
-    - 1,1,2
-- 최종 피로도는 1^2*2 + (1+1)^2*(3-2)
-    - 1^2*2 + (1^2+2*1+1^2)*1
-
-- len(works)가 변화했을 때도 탐색을 해봐야 한다
-    - len(works) - 1가 가능한 경우
-    - len(works) - 2
-    - len(works) - 3이 가능한 경우
-    ...
+(2) 직접 별도의 최대 힙을 만드는 방법
 
 """
+
+import heapq
+
 def solution(n, works):
-    works = sorted(works)
-    pirodo = []
-    # len(works)가 그대로인 경우
-    mok, namuzi = (sum(works) - n) // len(works), (sum(works) - n) % len(works)
-    pirodo.append((mok**2)*(len(works)-namuzi) + ((mok+namuzi)**2) * namuzi)
+    answer = 0
+    works = list(map(lambda x:-x, works))
+    heap = heapq.heapify(works)
+    while n:
+        top = heapq.heappop(works)
+        if top == 0: break
+        top += 1
+        heapq.heappush(works,top)
+        n -=1
+    return sum(map(lambda x:x**2,works))
 
-    # len(works) - 1, -2, -3, ... 가 가능한 경우
-    for i in range(len(works)):
-        if n >= works[i]:
-            n -= works[i]
-            mok, namuzi = (sum(works[i:]) - n) // len(works[i:]), (sum(works[i:]) - n) % len(works[i:])
-            pirodo.append((mok ** 2) * (len(works[i:]) - namuzi) + ((mok + namuzi) ** 2) * namuzi)
 
-    return min(pirodo)
 
 print(solution(4,[4,3,3]),12)
 print(solution(99, [2, 15, 22, 55, 55]), 580)
