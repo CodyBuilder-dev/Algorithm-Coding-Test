@@ -1,49 +1,57 @@
 """
 제목 : 스타 수열
 
-아이디어 : 자릿수가 50만개다
-- 2^50만 또는 Combination으로는 접근이 불가능하다
+아이디어 : 원소의 길이가 N일 경우 모든 부분집합을 따지는 것은 2^N
+-> 기각
 
-아이디어 : 조건을 잘 해석한다
-- 교집합의 개수는 1 이상이어야 한다
-    - 즉, x[0] == x[2] or x[1] == x[2] or x[0] == x[3] or x[1] == x[3]
+아이디어 : 어차피 원하는 것은 스타수열의 '길이'이다
+- 스타 수열이 되는 조건을 찾아내서 그 길이를 찾으면 된다
+- 길이가 최대가 되려면 원소의 수가 제일 많은 놈을 축으로 삼아야 한다
+- 어차피 N/2초과이면 안되니 버리고, N/2이하인 원소 중 제일 큰 친구부터 찾기
+- 각 인덱스간의 거리가 무조건
+-> 처리가 너무 복잡해질 듯
 
-- 즉, 가장 많이 출현하는 놈을 기준으로 삼는다
-    - 가장 많이 출현하는놈이 여럿이면 모두 찾는다
-    - 즉, 가능한 모든 원소에 대해 완전탐색을 하는 것
-
-- 가장 많이 출현한놈의 위치를 기준으로 검사한다
-    - 가장 많이 출현하는놈들의 위치를 알아낸다
-    - 해당 위치를 기준으로 좌우로 붙인 애들의 set을 만드는 함수
-    - 해당 set의 원소만 뽑앗을 때, 그게 스타 수열인지 알려주늖 ㅏㅁ수
-    - 스타수열일 경우 해당 수열의 길이 저장
-    
-- 토너먼트랑 비슷하게 검사?
-    - (idx+1)//2가 같으면 못 붙임
-    - (idx+1)//2가 다르면 붙일 수 있음
-    -> 잘 안됨
-
+아이디어 :
+스택을 이용해 2칸씩 비교
+축이 있으면 확정
+축이 없으면 대기상태
+축이 2개면 하나 버리고 그 앞에 대기상태 가져옴
 
 """
+from collections import deque
 from collections import Counter
 
 def solution(a):
-    if len(a) <= 1:
-        return 0
 
-    idx_list = [i for i,x in enumerate(a) if x == Counter(a).most_common(1)[0][0]]
-    idx_list = list(map(lambda x:x//2,idx_list))
-    c = len(Counter(idx_list).keys())
-    return c*2
+    max_len = -1
 
-# 테스트 케이스
-print(solution([]),0)
-print(solution([1]),0)
-print(solution([5,6,4,6,4,1,2,3,2]),4)
-print(solution([2,3,3,4,1,3]),6)
-print(solution([3,3,3,3,3,3]),0)
-print(solution([3,2,3,2,3,2]),6)
-print(solution([4,4,1,4,2,4]),4)
-print(solution([3,1,2,3,4]),4)
-print(solution([2,2,0,0,3,3]),4)
+    for key,value in sorted(Counter(a).items(), key= lambda pair:-pair[1]):
+        if value <= (max_len // 2): break
+        most_common = key
+        left = []
+        right = deque(a)
+        while right:
+            middle = right.popleft()
+            if middle != most_common:
+                if len(left) % 2 and left[-1] == most_common:
+                    left.append(middle)
 
+                elif len(left) % 2 == 0:
+                    if right and right[0] == most_common:
+                        left.append(middle)
+
+            else:
+                if len(left) % 2 and left[-1] != most_common:
+                    left.append(middle)
+                elif len(left) % 2 == 0:
+                    if right and right[0] != most_common:
+                        left.append(middle)
+        max_len = max(max_len,len(left))
+    return max_len
+
+# print(solution([0]),0)
+print(solution([5,2,3,3,5,3]),4)
+print(solution([0,3,3,0,7,2,0,2,2,0]),8)
+print(solution([1, 2, 2, 1, 3]),4)
+print(solution([0,0,0,2,3,4,3,5,3,1]),6)
+print(solution([4, 0, 0, 2, 1, 1, 1, 1, 1, 1, 1, 1, 0, 3]),6)
