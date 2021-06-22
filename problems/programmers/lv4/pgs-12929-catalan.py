@@ -18,6 +18,5 @@ def solution(n):
 
     return c[n]
 
-print(solution(1))
-print(solution(4))
-print(solution(14))
+for i in range(1,15):
+    print(solution(i))
