@@ -1,19 +1,19 @@
 """
 제목 : [1차] 셔틀버스
 
-아이디어 : 다양한 접근법이 있을듯
-(1) 버스 도착시간을 시뮬레이션 한다
-- 앞에서부터 버스를 채워 나간다
-- 가장 마지막
+아이디어 :
+(1) 버스 출발시간을 dictionary의 key로, 탑승객 목록을 value로 집어넣는다
 
-(3) 이분탐색을 한다
-- 09:00부터 마지막 버스 신까지 본다
-- 특정 x분에 줄을 섰을떄 탈수있을지 본다
-    - 탈수있는지 판단은, 제일 가까운 다음 버스부터 탈수있을때까지 검사한다
-    - 남아있는사람이 버스 승객보다 같거나 작아야 하고, 크면 다음버스를 기달야 한다
-    - 못 탄 채로 다음 버스가 없으면 못탄다
-    - 탈수있으면 뒤로 간다
-    - 못타면 앞으로 간다
+(2) 승객 리스트를 돌면서, 이 승객이 탈 수 있는 가장 빠른 버스를 이분탐색으로 찾는다
+- 승객을 도착시간순으로 정렬한 후, 빠르게 온 승객부터 순차적으로 버스에 태운다고 하자
+- 이분탐색으로 출발시간이 승객의 대기시간 이후인 버스 중 가장 가까운 버스를 찾는다(Upper Bound)
+- 해당 버스의 탑승자 수가 m명 미만이면 승객을 집어넣고, m명 이상이면 다음 버스를 찾는다
+    - 탈수있을때가지 반복한다
+
+
+(3) 모든 버스와 승객 정보가 확인되면, 그냥 프로도를 제일 마지막 버스에 태운다
+ - 제일 마지막 버스가 비어있으면, 제일 마지막 버스 출발시간에 와서 타면 된다
+ - 제일 마지막 버스가 꽉 찼으면, 제일 마지막 사람에 타는 사람보다 1분 빨리 와서 타면 된다
 
 구현 :
 시간의 사칙연산이 필요하므로 datetime대신 timedelta를 쓰자!
@@ -22,8 +22,6 @@ from datetime import datetime,timedelta
 from bisect import bisect_left
 
 
-
-# print(datetime.strptime("09:00","%H:%M") datetime.strptime("10:00","%H:%M"))
 def solution(n, t, m, timetable):
     term = timedelta(minutes=t)
 
@@ -35,7 +33,7 @@ def solution(n, t, m, timetable):
         dt = datetime.strptime(person, "%H:%M")
         td = timedelta(hours=dt.hour, minutes=dt.minute)
 
-        # 가장 빠른 버스를 이분탐색으로?
+        # 탈수있는 가장 빠른 버스를 이분탐색으로 찾는다
         idx = bisect_left(list(bus_schedule.keys()),td)
         while idx < len(bus_schedule.keys()):
             bus = bus_schedule[list(bus_schedule.keys())[idx]]
