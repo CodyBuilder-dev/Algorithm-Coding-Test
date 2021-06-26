@@ -35,9 +35,10 @@ def solution(n, t, m, p):
         answer2 += answer[i]
         
     return answer2
-n,t,m,p = 2,4,2,1
-n,t,m,p = 16,16,2,1
-print(solution(n,t,m,p))
+
+print(solution(2,4,2,1))
+print(solution(16,16,2,1))
+print(solution(16,1000,100,100))
 
 
 
