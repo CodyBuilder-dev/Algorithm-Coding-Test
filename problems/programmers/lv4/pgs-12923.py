@@ -34,6 +34,7 @@ def solution1(begin,end):
             sieve[i] = 0
             continue
         if i < 20_000_000:
+            pass
         else:
             d = get_divisor(i)
             sieve[i] = d[-1]
