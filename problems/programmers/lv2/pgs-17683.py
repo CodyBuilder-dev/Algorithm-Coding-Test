@@ -1,5 +1,5 @@
 """
-제목 : 방금 그곡
+제목 : [3차]방금그곡
 
 아이디어 :
 (1) 음악의 전체를 만든다
@@ -36,30 +36,29 @@ def find_sublist(m,music):
 
 def solution(m, musicinfos):
     m = re.findall(r'\w#?',m)
+
     new_infos= []
-    for i,music in enumerate(musicinfos):
+    for i,musicinfo in enumerate(musicinfos):
         # 시간 파싱
-        music = music.split(',')
-        delta = datetime.strptime(music[1],"%H:%M") - datetime.strptime(music[0],"%H:%M")
-        duration = delta.seconds//60 
-        # print(delta.seconds//60)
-        
-        # 음악 파싱
-        music[3] = re.findall(r'\w#?',music[3])
-        # print(music[3])
-        period = len(music[3])
+        musicinfo = musicinfo.split(',')
+        delta = datetime.strptime(musicinfo[1],"%H:%M") - datetime.strptime(musicinfo[0],"%H:%M")
+        duration = delta.seconds//60
 
-        played_music = (music[3]*ceil(duration/period))[:duration]
-        # print(played_music)
-        new_infos.append([played_music,music[2],duration,i])
+        # 음계 파싱
+        musicinfo[3] = re.findall(r'\w#?',musicinfo[3])
+        period = len(musicinfo[3])
 
+        played_music = (musicinfo[3]*ceil(duration/period))[:duration]
 
-    # print(musicinfos)  # for문 내에서 변하지 않음
-    new_infos = sorted(new_infos,key=lambda x:(-x[2],x[3]))
-    for music in new_infos:
-        if find_sublist(m,music[0]):
-            return music[1]
+        # 인덱스, 재생시간, 이름, 악보
+        new_infos.append([i,duration,musicinfo[2],played_music])
+
+    new_infos = sorted(new_infos,key=lambda x:(-x[1],x[0]))
+    for new_music in new_infos:
+        if find_sublist(m,new_music[3]):
+            return new_music[2]
     return "(None)"
 
-print(solution("ABCDEFG",["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
-print(solution("CC#BCC#BCC#BCC#B",["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]))
+# print(solution("ABCDEFG",["12:00,12:14,HELLO,CDEFGAB", "13:00,13:05,WORLD,ABCDEF"]))
+# print(solution("CC#BCC#BCC#BCC#B",["03:00,03:30,FOO,CC#B", "04:00,04:08,BAR,CC#BCC#BCC#B"]))
+print(solution("CC#BCC#BCC#BCC#B",["03:00,03:05,FOO,CC#B"]))
