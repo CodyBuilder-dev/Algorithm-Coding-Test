@@ -69,16 +69,12 @@ def solution(phone_book):
     return True
 
 
-phone_book = ["119", "97674223", "1195524421"]
-phone_book = ["123", "456", "789"]
-# phone_book = ["12", "123", "1235", "567", "88"] # False
-# phone_book = ["1","2"] # True
-# phone_book = ["987987","87"] # True
-# phone_book = ["112","44","4544"] # True
-phone_book = ["33", "11", "222", "21122", "211"] # False
-# phone_book = ["12","13"]
-print(solution(phone_book))
-#
-# a = {"end":{}}
-# if a.get("end") :
-#     print("True")
+# 테스트 케이스
+print(solution(["119", "97674223", "1195524421"]),False)
+print(solution(["123", "456", "789"]),True)
+print(solution(["12", "123", "1235", "567", "88"]),False)
+print(solution(["1","2"]),True)
+print(solution(["987987","87"]),True)
+print(solution(["112","44","4544"]),True)
+print(solution(["33", "11", "222", "21122", "211"]),False)
+print(solution(["12","13"]),True)
