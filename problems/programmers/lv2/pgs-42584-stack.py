@@ -28,8 +28,9 @@ def solution(prices):
             previous_idx = stack.pop()[1]
             answer[previous_idx] = i - previous_idx
 
-        else:
-            stack.append((p,i))
+        # else문이 있으나 없으나 동작이 똑같습니다. 즉 쓸 필요가 없습니다
+        # else:
+        stack.append((p,i))
 
     # 끝까지 떨어지지 않은것만 별도 처리
     answer = [len(answer) - 1 - i if not a else a for i,a in enumerate(answer)]
