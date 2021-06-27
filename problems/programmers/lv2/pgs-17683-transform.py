@@ -6,7 +6,6 @@
 """
 
 from datetime import datetime
-from math import ceil
 
 
 def transform(m):
@@ -26,7 +25,7 @@ def transform(m):
             stack.append(mapping[origin])
         else:
             stack.append(c)
-    return stack
+    return ''.join(stack)
 
 
 def find_sublist(m, music):
@@ -48,9 +47,9 @@ def solution(m, musicinfos):
 
         # 음계 파싱
         musicinfo[3] = transform(musicinfo[3])
-        period = len(musicinfo[3])
 
-        played_music = (musicinfo[3] * ceil(duration / period))[:duration]
+        played_music = (duration//len(musicinfo[3]))*musicinfo[3]
+        played_music = played_music[:duration]
 
         # 인덱스, 재생시간, 이름, 악보
         new_infos.append([i, duration, musicinfo[2], played_music])
