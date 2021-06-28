@@ -36,16 +36,20 @@ def parse_time(time):
     hh = 60 * 60 * 1000 * int(hh)
     s = hh + mm + ss + ms
 
-    if '.' in t:
-        ts, ms = t[:-1].split('.')
+    # 오차없이 하고 싶으면 아래처럼 파싱 및 int를 이용해 처리하는게 좋다
+    # if '.' in t:
+    #     ts, ms = t[:-1].split('.')
+    #
+    # else:
+    #     ts, ms = t[:-1], '0'
+    #
+    # ms = int((ms + ('0' * 3))[:3])
+    # ts = 1000 * int(ts)
+    #
+    # t = ts + ms
 
-    else:
-        ts, ms = t[:-1], '0'
-
-    ms = int((ms + ('0' * 3))[:3])
-    ts = 1000 * int(ts)
-
-    t = ts + ms
+    # 그러나 이 문제에서는, 실수의 소수점 자리수가 무조건 고정이므로 float을 써도 정답처리가 된다
+    t = float(t[:-1])*1000
     return s, t
 
 
@@ -61,25 +65,17 @@ def solution(lines):
         boundaries.append(e)
         parsed_lines.append((s, e))
 
-
     boundaries = sorted(boundaries)
     parsed_lines = sorted(parsed_lines, key=lambda x: x[0])
 
     max_cnt = -987654321
-    # for i in range(boundaries[0],boundaries[-1]):
-        # boundary = i
     for boundary in boundaries:
         boundary_end = boundary + 999
 
         temp = 0
         for parsed_line in parsed_lines:
-            if parsed_line[0] <= boundary and parsed_line[1] >= boundary:
+            if parsed_line[0] <= boundary_end and parsed_line[1] >= boundary:
                 temp += 1
-            elif parsed_line[0] >= boundary and parsed_line[1] <= boundary_end:
-                temp += 1
-            elif parsed_line[0] <= boundary_end and parsed_line[1] >= boundary_end:
-                temp += 1
-
 
         max_cnt = max(temp, max_cnt)
     return max_cnt
@@ -88,10 +84,10 @@ print(solution([
 "2016-09-15 01:00:04.001 2.0s",
 "2016-09-15 01:00:07.000 2s"
 ]),1)
-# print(solution([
-# "2016-09-15 01:00:04.002 2.0s",
-# "2016-09-15 01:00:07.000 2s"
-# ]),2)
+print(solution([
+"2016-09-15 01:00:04.002 2.0s",
+"2016-09-15 01:00:07.000 2s"
+]),2)
 print(solution([
 "2016-09-15 20:59:57.421 0.351s",
 "2016-09-15 20:59:58.233 1.181s",
