@@ -14,7 +14,7 @@
 
 구현 : 생각이 안나서 글로벌 변수로 처리리
 """
-importre
+import re
 
 result = set()
 def dfs(user_ids, banned_ids,banned_idx, checked):
