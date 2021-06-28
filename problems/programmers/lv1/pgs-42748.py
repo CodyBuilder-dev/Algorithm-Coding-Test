@@ -1,6 +1,5 @@
 """
-카테고리 : 정렬
-
+제목 : K번째수
 """
 
 def solution(array, commands):
