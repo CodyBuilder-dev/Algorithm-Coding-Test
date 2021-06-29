@@ -10,27 +10,26 @@
 - COST배열은 초기에 inf로 초기화한다
 - 만약 도달하지 못했다면, inf로 그대로 있을 것이므로 그러면 -1을 ㅂ반환한다.
 """
-from math import inf
-
 def solution(maps):
     n = len(maps)
     m = len(maps[0])
-    cost = [[inf]*m for _ in range(n)]
+    visited = [[False]*m for _ in range(n)]
 
     q = []
     q.append([0,0])
-    cost[0][0] = 1
+    visited[0][0] = True
     while q:
-        y,x = q.pop(0)
+        y, x = q.pop(0)
 
         for i in [[0,1],[-1,0],[0,-1],[1,0]]:
             next_y, next_x = y+i[0],x+i[1]
             if next_y < n and next_y >= 0 and next_x < m and next_x >= 0:
-                if maps[next_y][next_x] == 1:
-                    if cost[next_y][next_x] > cost[y][x] +1:
-                        cost[next_y][next_x] = cost[y][x] +1
+                if maps[next_y][next_x] >=1:
+                    if not visited[next_y][next_x]:
+                        maps[next_y][next_x] = maps[y][x] + 1
+                        visited[next_y][next_x] = True
                         q.append([next_y,next_x])
-    return cost[n-1][m-1] if cost[n-1][m-1] != inf else -1
+    return maps[n-1][m-1] if maps[n-1][m-1] != 1 else -1
 
 # 테스트 케이스
 print(solution([[1,0,1,1,1],[1,0,1,0,1],[1,0,1,1,1],[1,1,1,0,1],[0,0,0,0,1]]))
